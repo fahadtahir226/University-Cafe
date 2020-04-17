@@ -1,12 +1,15 @@
 import React from 'react'
+import fruitImg from '../img/fruits.jpg'
+import icecream from '../img/ice-cream.jpg'
+import beverages from '../img/beverages.jpg';
 
 class UserDashboard extends React.Component {
   render(){
     return(
     <div className="flex flex-col lg:flex-row items-stretch min-h-screen text-center">
-      <Station station_Num={1} costomers={3} />
-      <Station station_Num={2} costomers={1} />
-      <Station station_Num={3} costomers={2}/>
+      <Station station_Num={1} costomers={3} img= {fruitImg} title={"Fruits"}/>
+      <Station station_Num={2} costomers={1} img= {icecream} title={"Ice Cream"}/>
+      <Station station_Num={3} costomers={4} img= {beverages} title={"Beverages"}/>
     </div>  
     )
   }
@@ -17,7 +20,7 @@ const Station = props => {
     return (
         <div className={"w-full lg:w-1/3 text-white transition border-l border-white " + color}>
           <div className="h-full p-6">
-            <h1 className="font-bold text-5xl bg-white text-mainBlue capitalize rounded-lg mb-4">Station {props.station_Num}</h1>
+            <h1 style={{color: "#0023b4" , fontFamily: "Source Sans Pro,sans-serif"}} className="font-bold text-5xl bg-white capitalize rounded-lg mb-4">Station {props.station_Num}</h1>
             <div className="flex flex-col items-center justify-center bg-white rounded-lg p-2">
               <div className={"flex flex-row m-2 rounded-lg w-full items-stretch " + color}>
                 <div className="w-1/3 border-r border-white flex items-center justify-center">
@@ -27,9 +30,17 @@ const Station = props => {
                   </svg>
                 </div>
                 <div className="w-2/3 border-l border-white text-center">
-                  <h2 className="text-9xl font-bold text-white rounded-full">{props.costomers}</h2>
+                  <h2 style={{fontSize: "8rem", fontFamily: "Source Sans Pro,sans-serif" }} className=" font-bold text-white rounded-full">{4 - props.costomers}</h2>
                 </div>
               </div>
+                <div class="w-full">
+                  <div class="w-full">
+                    <div class="flex flex-col mb-2">
+                      <img style={{height: '400px'}} className="w-full rounded-lg" src={props.img} alt="" />
+                      <h3 style={{color: "#0023b4" , fontFamily: "Source Sans Pro,sans-serif"}} class="flex-auto p-2 text-4xl font-bold rounded">{props.title}</h3>
+                    </div>
+                  </div>
+                </div>
             </div>
           </div>
         </div>
@@ -47,7 +58,7 @@ const findColor = costumers => {
     case 3:
       return "bg-orange-600"
     case 4:
-      return "bg-red-400"
+      return "bg-red-600"
   }
 } 
 
