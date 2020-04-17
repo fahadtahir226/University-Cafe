@@ -1,5 +1,7 @@
 import React from 'react';
-import {db} from '../Authentication/auth'
+import {db, SignOut} from '../Authentication/auth'
+import AdminDashboard from './AdminDashboard'
+import UserDashboard from './UserDashboard'
 import '../App.css';
 
 
@@ -9,7 +11,6 @@ class Dashboard extends React.Component{
     this.state = { userType: '' }
   }
   componentDidMount(){
-    // console.log(this.props);
     db.collection("Users").doc(this.props.userInfo.uid).get()
       .then(doc => {
       if (doc.exists) {
@@ -33,6 +34,11 @@ class Dashboard extends React.Component{
     return (
         <div className="login bg-lightWhite h-full lg:h-screen">
             Hey <b style={{color: 'blue'}}>{this.state.userType}</b> {userInfo.email}
+            <button style={{border:"1px solid dimgrey", textAlign: 'right'}} onClick={SignOut}>Sign out</button>
+          {this.state.userType === 'admin' ?
+            <AdminDashboard userInfo={userInfo} isAuthenticated = {isAuthenticated} />:
+            <UserDashboard />
+          }
         </div>
     ) 
   }
