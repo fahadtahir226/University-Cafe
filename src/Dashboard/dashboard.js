@@ -3,7 +3,8 @@ import {db, SignOut} from '../Authentication/auth'
 import AdminDashboard from './AdminDashboard'
 import UserDashboard from './UserDashboard'
 import '../App.css';
-
+// import firebase from '../Authentication/Firebase'
+// export const database = firebase.database();
 
 class Dashboard extends React.Component{
   constructor(props) {

@@ -13,7 +13,7 @@ class Login extends React.Component{
         <div className="h-screen relative lg:absolute w-full top-0">
           <div className="relative lg:top-0 lg:right-0 p-12 lg:p-2 w-full lg:w-1/2 mx-auto h-screen flex flex-col justify-center">
           <div className="py-12 text-center rounded-lg">
-            <img alt="Logo" src="./img/logo.1708b5e5.svg" className="mx-auto w-81" />
+            <img alt="Logo" src="./img/logo.svg" className="mx-auto w-81" />
           <form className="w-full lg:w-2/4 mx-auto">
             <div className="mb-8 relative">
               <input id="login-email" type="email" placeholder="Email" className="bg-lightWhite focus:outline-none p-2 border rounded focus:border-mainBlue focus:placeholder-mainBlue w-full focus:text-mainBlue transition border-gray-400 placeholder-grey-400" />

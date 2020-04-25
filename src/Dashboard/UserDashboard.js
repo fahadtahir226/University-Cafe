@@ -1,22 +1,70 @@
 import React from 'react'
-import fruitImg from '../img/fruits.jpg'
-import icecream from '../img/ice-cream.jpg'
-import beverages from '../img/beverages.jpg';
+import firebase from '../Authentication/Firebase'
+export const database = firebase.database();
+
 
 class UserDashboard extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { dishesData : {} , stationData: []}
+  }
+  UNSAFE_componentWillMount() {
+    let date = new Date().getDay();
+     database.ref('/').on("value", function(dataSnapshot) {
+        if (dataSnapshot.val()){
+
+          let stationData = dataSnapshot.val().stations;
+          
+          let dishesData = dataSnapshot.val().chef[date];
+          new Date().getHours < 16 ? dishesData = dishesData.deg : dishesData = dishesData.din;
+
+          this.setState({dishesData, stationData});
+
+        }
+        else{
+          console.log("No Data Found!!!");
+        }
+      }.bind(this));
+    }
   render(){
     return(
     <div className="flex flex-col lg:flex-row items-stretch min-h-screen text-center">
-      <Station station_Num={1} costomers={3} img= {fruitImg} title={"Fruits"}/>
+    {
+      Object.keys(this.state.dishesData).map((station, key) => { 
+      return <Station 
+        key={key}
+        station_Name={this.state.stationData[key + 1].name} 
+        costomers={this.state.stationData[key + 1].people} 
+        station_Num={key + 1} 
+        plates={this.state.dishesData[station].plates}
+        /> 
+        })
+    }
+      {/* <Station station_Num={1} costomers={3} img= {fruitImg} title={"Fruits"}/>
       <Station station_Num={2} costomers={1} img= {icecream} title={"Ice Cream"}/>
-      <Station station_Num={3} costomers={4} img= {beverages} title={"Beverages"}/>
+      <Station station_Num={3} costomers={4} img= {beverages} title={"Beverages"}/> */}
     </div>  
     )
   }
 }
 
+const Dish = props => {
+  console.log("Dish",props)
+  return (
+    <div className="w-full">
+      <div className="w-full">
+        <div className="flex flex-col mb-2">
+          <img style={{height: '400px'}} className="w-full rounded-lg" src={props.img} alt="" />
+          <h3 style={{color: "#0023b4" , fontFamily: "Source Sans Pro,sans-serif"}} className="flex-auto p-2 text-4xl font-bold rounded">{props.name}</h3>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 const Station = props => {
   var color = findColor(props.costomers);
+  console.log("From Station",props)
     return (
         <div className={"w-full lg:w-1/3 text-white transition border-l border-white " + color}>
           <div className="h-full p-6">
@@ -33,14 +81,11 @@ const Station = props => {
                   <h2 style={{fontSize: "8rem", fontFamily: "Source Sans Pro,sans-serif" }} className=" font-bold text-white rounded-full">{4 - props.costomers}</h2>
                 </div>
               </div>
-                <div class="w-full">
-                  <div class="w-full">
-                    <div class="flex flex-col mb-2">
-                      <img style={{height: '400px'}} className="w-full rounded-lg" src={props.img} alt="" />
-                      <h3 style={{color: "#0023b4" , fontFamily: "Source Sans Pro,sans-serif"}} class="flex-auto p-2 text-4xl font-bold rounded">{props.title}</h3>
-                    </div>
-                  </div>
-                </div>
+              {
+                props.plates.map((plate, key) => { 
+                  return <Dish name={plate.name} img={plate.img} key={key}/>
+              })
+              }
             </div>
           </div>
         </div>
