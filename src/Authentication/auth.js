@@ -13,7 +13,6 @@ export const Register = (e) => {
     e.preventDefault();
     var email = document.getElementById("reg-email").value;
     var pass = document.getElementById("reg-password").value;
-    var type = document.getElementById("reg-type").value;
     if ((email.length && pass.length ) !== 0) {
         auth.createUserWithEmailAndPassword(email, pass)
             .then(async (user) => {

@@ -8,7 +8,7 @@ import '../App.css';
 class Dashboard extends React.Component{
   constructor(props) {
     super(props);
-    this.state = { userType: '' }
+    this.state = { userType: ''}
   }
   componentDidMount(){
     db.collection("Users").doc(this.props.userInfo.uid).get()
@@ -37,7 +37,10 @@ class Dashboard extends React.Component{
             <button style={{border:"1px solid dimgrey", textAlign: 'right'}} onClick={SignOut}>Sign out</button>
           {this.state.userType === 'admin' ?
             <AdminDashboard userInfo={userInfo} isAuthenticated = {isAuthenticated} />:
+            this.state.userType === 'user' ? 
             <UserDashboard />
+            :
+            null 
           }
         </div>
     ) 

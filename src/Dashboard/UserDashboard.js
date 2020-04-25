@@ -59,6 +59,8 @@ const findColor = costumers => {
       return "bg-orange-600"
     case 4:
       return "bg-red-600"
+    default:
+      return ""
   }
 } 
 

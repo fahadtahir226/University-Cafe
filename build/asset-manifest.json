@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/static/css/main.5f361e03.chunk.css",
+    "main.js": "/static/js/main.bda90f2f.chunk.js",
+    "main.js.map": "/static/js/main.bda90f2f.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.a3d9e0a6.js",
+    "runtime-main.js.map": "/static/js/runtime-main.a3d9e0a6.js.map",
+    "static/js/2.4d81d992.chunk.js": "/static/js/2.4d81d992.chunk.js",
+    "static/js/2.4d81d992.chunk.js.map": "/static/js/2.4d81d992.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.b42d243d575c4ba9ea7fe5cf82c7dc06.js": "/precache-manifest.b42d243d575c4ba9ea7fe5cf82c7dc06.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.5f361e03.chunk.css.map": "/static/css/main.5f361e03.chunk.css.map",
+    "static/js/2.4d81d992.chunk.js.LICENSE.txt": "/static/js/2.4d81d992.chunk.js.LICENSE.txt",
+    "static/media/beverages.jpg": "/static/media/beverages.deb3f23c.jpg",
+    "static/media/fruits.jpg": "/static/media/fruits.f361caf2.jpg",
+    "static/media/ice-cream.jpg": "/static/media/ice-cream.38b03f6c.jpg",
+    "static/media/loading.gif": "/static/media/loading.0344471d.gif"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a3d9e0a6.js",
+    "static/js/2.4d81d992.chunk.js",
+    "static/css/main.5f361e03.chunk.css",
+    "static/js/main.bda90f2f.chunk.js"
+  ]
+}
