@@ -3,8 +3,6 @@ import {db, SignOut} from '../Authentication/auth'
 import AdminDashboard from './AdminDashboard'
 import UserDashboard from './UserDashboard'
 import '../App.css';
-// import firebase from '../Authentication/Firebase'
-// export const database = firebase.database();
 
 class Dashboard extends React.Component{
   constructor(props) {
@@ -34,8 +32,9 @@ class Dashboard extends React.Component{
     console.log(isAuthenticated);
     return (
         <div className="login bg-lightWhite h-full lg:h-screen">
-            Hey <b style={{color: 'blue'}}>{this.state.userType}</b> {userInfo.email}
+            <div style={{display: 'none'}} >Hey <b style={{color: 'blue'}}>{this.state.userType}</b> {userInfo.email}
             <button style={{border:"1px solid dimgrey", textAlign: 'right'}} onClick={SignOut}>Sign out</button>
+            </div>
           {this.state.userType === 'admin' ?
             <AdminDashboard userInfo={userInfo} isAuthenticated = {isAuthenticated} />:
             this.state.userType === 'user' ? 
